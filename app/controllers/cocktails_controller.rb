@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show, :edit]
+  before_action :set_cocktail, only: [:show, :edit, :update]
 
   def index
     @cocktails = Cocktail.all
@@ -25,6 +25,8 @@ class CocktailsController < ApplicationController
   end
 
   def update
+    @cocktail.update(cocktail_params)
+    redirect_to cocktails_path # redirect_to actually calls the method again
   end
 
   def destroy
