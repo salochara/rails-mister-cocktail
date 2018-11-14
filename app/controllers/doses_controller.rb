@@ -16,6 +16,11 @@ class DosesController < ApplicationController
     else
       render 'new'
     end
+
+    def destroy
+      @dose = params[:id]
+      @dose.destroy
+    end
   end
 
   private
