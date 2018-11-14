@@ -4,6 +4,8 @@
     <% @cocktails.each do |cocktail| %>
     <li>
     <%= cocktail.name %>
+    <%= link_to 'Delete', cocktail_path(cocktail), method: :delete %>
+    <%= link_to 'Create a dose', new_cocktail_dose_path(cocktail) %>
   </li>
   <% end %>
 </ul>

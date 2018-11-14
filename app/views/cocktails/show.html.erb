@@ -1,2 +1,6 @@
 <h1>This is the SHOW VIEW!</h1>
-<%= @cocktail.name %>
+
+<h3><%= @cocktail.name %></h3>
+
+<%= link_to 'Delete?', cocktail_path, method: :delete %>
+<%= link_to 'Go to Index', cocktails_path %>
