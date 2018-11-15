@@ -1,31 +1,22 @@
-<h1>This is the SHOW VIEW!</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>
+        <%= "About #{@cocktail.name}" %>
+      </h3>
+      <p>
+        <%= "The #{@cocktail.name} is absolutely amazing" %>
+        <div>
+          <%= link_to 'Go to Index', cocktails_path, class: "btn btn-primary"%>
+          <%= link_to 'Add a dose', new_cocktail_dose_path %>
+          <%= link_to 'Delete', cocktail_path, method: :delete, class: "btn btn-danger" %>
+        </div>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 
-<h3><%= @cocktail.name %></h3>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+    </div>
 
-
-<ul>
-  <% @cocktail.doses.each do |d| %>
-  <li>
-      DOSE INGREDIENT: <%= d.ingredient.name %>
-      DOSE DESCRIPTION: <%= d.description %>
-      <%= link_to 'Delete dose', dose_path(d), method: :delete%>
-  </li>
-  <% end %>
-</ul>
-
-
-<% if @cocktail[:photo].nil? %>
-<%= simple_form_for @cocktail do |f| %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
-<% end %>
-
-
-
-
-
-<%= link_to 'Delete?', cocktail_path, method: :delete %>
-<%= link_to 'Go to Index', cocktails_path %>
+  </div>
+</div>
