@@ -2,25 +2,24 @@ class DosesController < ApplicationController
   before_action :set_cocktail, only: %i[new create]
 
   def new
-    # raise
     @dose = Dose.new
   end
 
   def create
     @dose = Dose.new(dose_params)
     @dose.cocktail = @cocktail
-    @dose.ingredient = Ingredient.find(params[:dose][:ingredient_id])
 
-    if @dose.save!
-      redirect_to cocktails_path
+    if @dose.save
+      redirect_to cocktail_path(@cocktail)
     else
       render 'new'
     end
+  end
 
-    def destroy
-      @dose = params[:id]
-      @dose.destroy
-    end
+  def destroy
+    @dose = Dose.find(params[:id])
+    @dose.destroy
+    redirect_to cocktail_path(@dose.cocktail)
   end
 
   private
