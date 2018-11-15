@@ -9,6 +9,7 @@ gem 'font-awesome-sass', '~> 5.0.9'
 gem 'simple_form'
 gem 'cloudinary'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'carrierwave', '~> 1.2'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
