@@ -6,17 +6,28 @@
       </h3>
       <p>
         <%= "The #{@cocktail.name} is absolutely amazing" %>
+        <% @cocktail.doses.each do |d|%>
+        <ul>
+          <li>
+            <%= d.description %>
+            <%= d.ingredient.name %>
+          </li>
+        </ul>
+
+
+        <% end %>
         <div>
           <%= link_to 'Go to Index', cocktails_path, class: "btn btn-primary"%>
-          <%= link_to 'Add a dose', new_cocktail_dose_path %>
+          <%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail), class: "btn btn-info" %>
           <%= link_to 'Delete', cocktail_path, method: :delete, class: "btn btn-danger" %>
         </div>
       </p>
     </div>
     <div class="col-md-6">
       <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-
     </div>
 
   </div>
 </div>
+
+
